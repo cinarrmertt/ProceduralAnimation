@@ -67,9 +67,17 @@ public class PlayerController : MonoBehaviour
 
     private void UpdateMovementState()
     {
-        bool isMovementInput= _playerLocomotionMap._moveInput != Vector2.zero;
+        bool isMovementInput = _playerLocomotionMap._moveInput != Vector2.zero;
         bool isMovingLaterally = IsMovingLaterally();
-        bool isSprinting = _playerLocomotionMap._sprintToggleOn && isMovementInput;
+
+        // Geriye doğru gidip gitmediğini kontrol ediyoruz.
+        // Genellikle Y ekseni dikey harekettir (W/S veya İleri/Geri Joystick). 
+        // 0'dan küçükse geri gidiyor demektir.
+        bool isMovingBackward = _playerLocomotionMap._moveInput.y < 0;
+
+        // Koşma şartı: Toggle açık OLMALI && Hareket girdisi OLMALI && Geriye gitmiyor OLMALI
+        bool isSprinting = _playerLocomotionMap._sprintToggleOn && isMovementInput && !isMovingBackward;
+        
         bool isGrounded = IsGrounded();
 
         StateType lateralState = isSprinting ? StateType.Sprinting : 

@@ -3,9 +3,9 @@ using UnityEngine;
 public class RiseState : EnviromentInteractionState
 {
     public RiseState(EnviromentInteractionContext context, 
-        EnviromentInteractionStateMachine.EEnviromentInteractionState stateKey) : base(context, stateKey)
+        EnviromentInteractionStateMachine.EEnviromentInteractionState eState) : base(context, eState)
     {
-        EnviromentInteractionContext _context = context;
+        EnviromentInteractionContext Context = context;
     }
     
     public override void EnterState(){}
@@ -17,7 +17,15 @@ public class RiseState : EnviromentInteractionState
         return StateKey;
     }
 
-    public override void OnTriggerEnter(Collider other){}
-    public override void OnTriggerStay(Collider other){}
-    public override void OnTriggerExit(Collider other){}
+    public override void OnTriggerEnter(Collider other)
+    {
+    }
+
+    public override void OnTriggerStay(Collider other)
+    {
+    }
+
+    public override void OnTriggerExit(Collider other)
+    {
+    }
 }

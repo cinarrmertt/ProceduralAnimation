@@ -3,9 +3,9 @@ using UnityEngine;
 public class TouchState : EnviromentInteractionState
 {
     public TouchState(EnviromentInteractionContext context, 
-        EnviromentInteractionStateMachine.EEnviromentInteractionState stateKey) : base(context, stateKey)
+        EnviromentInteractionStateMachine.EEnviromentInteractionState eState) : base(context, eState)
     {
-        EnviromentInteractionContext _context = context;
+        EnviromentInteractionContext Context = context;
     }
     
     public override void EnterState(){}

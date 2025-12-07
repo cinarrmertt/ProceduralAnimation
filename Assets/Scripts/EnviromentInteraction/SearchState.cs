@@ -3,9 +3,9 @@ using UnityEngine;
 public class SearchState : EnviromentInteractionState
 {
     public SearchState(EnviromentInteractionContext context, 
-        EnviromentInteractionStateMachine.EEnviromentInteractionState stateKey) : base(context, stateKey)
+        EnviromentInteractionStateMachine.EEnviromentInteractionState eState) : base(context, eState)
     {
-        EnviromentInteractionContext _context = context;
+        EnviromentInteractionContext Context = context;
     }
     
     public override void EnterState(){}
@@ -17,7 +17,19 @@ public class SearchState : EnviromentInteractionState
         return StateKey;
     }
 
-    public override void OnTriggerEnter(Collider other){}
-    public override void OnTriggerStay(Collider other){}
-    public override void OnTriggerExit(Collider other){}
+    public override void OnTriggerEnter(Collider other)
+    {
+        Debug.Log(other.gameObject.name);
+        StartIKTargetPositionTracking(other);
+    }
+
+    public override void OnTriggerStay(Collider other)
+    {
+        UpdateIKTargetPosition(other);
+    }
+
+    public override void OnTriggerExit(Collider other)
+    {
+        StopIKTargetPositionTracking(other);
+    }
 }

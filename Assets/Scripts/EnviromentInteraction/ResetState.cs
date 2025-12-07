@@ -3,25 +3,23 @@ using UnityEngine;
 public class ResetState : EnviromentInteractionState
 {
     public ResetState(EnviromentInteractionContext context, 
-        EnviromentInteractionStateMachine.EEnviromentInteractionState stateKey) : base(context, stateKey)
+        EnviromentInteractionStateMachine.EEnviromentInteractionState eState) : base(context, eState)
     {
-        EnviromentInteractionContext _context = context;
+        EnviromentInteractionContext Context = context;
     }
 
     public override void EnterState()
     {
-        Debug.Log("Entering state ");
     }
     public override void ExitState(){}
 
     public override void UpdateState()
     {
-        Debug.Log("Updating state ");
     }
 
     public override EnviromentInteractionStateMachine.EEnviromentInteractionState GetNextState()
     {
-        return StateKey;
+        return EnviromentInteractionStateMachine.EEnviromentInteractionState.Search;
     }
 
     public override void OnTriggerEnter(Collider other){}
